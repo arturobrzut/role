@@ -19,4 +19,10 @@
     path: "{{ disconnected_scanner_package_path }}"
     patterns: "LMT-DisconnectedScanner-hp-ux-*.tar.gz"
   register: disconnected_scanner_for_hp_ux
+- name: "Fetch linux scanner"
+  fetch: 
+    src: "{{ disconnected_scanner_for_linux }}"
+    dest: "{{hostvars['localhost']['disconnected_scanner_for_linux'].files[0].path | default('./tmp')}}/"
+    flat: yes
+
 ...
